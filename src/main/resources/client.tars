@@ -1,0 +1,7 @@
+module TestClient
+{
+	interface Client
+	{
+		string rpcHello(int no, string name);
+	};
+};
