@@ -1,11 +1,16 @@
 package com.tencent.tars.client.testclient.Impl;
 
 
+import com.qq.tars.spring.annotation.TarsClient;
 import com.qq.tars.spring.annotation.TarsServant;
+import com.tencent.tars.client.exception.Result;
 import com.tencent.tars.client.testclient.AnswerServant;
+import com.tencent.tars.client.testserver.AnswerPrx;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -14,8 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 @TarsServant("AnswerClientObj")
 public class AnswerServantImpl implements AnswerServant {
 
-  @Autowired
-  private AnswerService answerService;
+  @TarsClient("Qingjiao.QAService.AnswerObj@tcp -h 192.168.3.6 -t 60000 -p 21001")
+  private AnswerPrx answerService;
 
 
   @RequestMapping(value = {"/reply"},method = RequestMethod.POST)

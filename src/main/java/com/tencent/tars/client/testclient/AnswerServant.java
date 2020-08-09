@@ -6,4 +6,5 @@ import com.qq.tars.protocol.annotation.Servant;
 
 @Servant
 public interface AnswerServant {
+
 }
